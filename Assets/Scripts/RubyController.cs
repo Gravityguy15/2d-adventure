@@ -13,6 +13,10 @@ public class RubyController : MonoBehaviour
     float vertical;
     public float speed = 5f;
 
+    public float timeInvicible = 2.0f;
+    bool isInvicible;
+    float invincibleTimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +30,13 @@ public class RubyController : MonoBehaviour
         //Player Movement
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
+
+        if (isInvicible)
+        {
+           invincibleTimer -= Time.deltaTime;
+           if (invincibleTimer < 0)
+               isInvicible = false;
+        }
         
     }
     private void FixedUpdate() 
@@ -41,6 +52,12 @@ public class RubyController : MonoBehaviour
 
         public void ChangeHealth(int amount)
         {
+          if (isInvicible)
+              return;
+
+              isInvicible = true;
+               invincibleTimer = timeInvicible;
+    
             currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
             Debug.Log(currentHealth+ "/" + maxHealth);
         }
