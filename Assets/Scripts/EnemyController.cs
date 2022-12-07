@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 position = rigidbody2D.position;
-        if (!vertical)
+        if (vertical)
         {
             position.x = position .x + Time.deltaTime * speed* direction;
         }
