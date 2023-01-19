@@ -20,6 +20,8 @@ public class RubyController : MonoBehaviour
     Animator animator;
     Vector2 lookDirection = new Vector2(1,0);
 
+    public GameObject projectilePrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +44,7 @@ public class RubyController : MonoBehaviour
             lookDirection.Set(move.x , move.y);
             lookDirection.Normalize();
         }
-
+         //Player Animations
         animator.SetFloat("Look X", lookDirection.x);
         animator.SetFloat("Look Y", lookDirection.y);
         animator.SetFloat("Speed", move.magnitude);
@@ -52,7 +54,12 @@ public class RubyController : MonoBehaviour
         {
            invincibleTimer -= Time.deltaTime;
            if (invincibleTimer < 0)
-               isInvicible = false;
+               isInvicible = false;    
+        }
+
+        if(Input.GetKeyDown (KeyCode.C))
+        {
+            Launch();     
         }
         
     }
@@ -67,7 +74,7 @@ public class RubyController : MonoBehaviour
         rigidbody2d.MovePosition(position);
     }
 
-
+        //Player Health
         public void ChangeHealth(int amount)
         {
             if (amount < 0)
@@ -85,6 +92,16 @@ public class RubyController : MonoBehaviour
             currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
             Debug.Log(currentHealth+ "/" + maxHealth);
 
+        }
+
+        void Launch()
+        {
+            GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
+
+            Projectile projectile = projectileObject.GetComponent<Projectile>();
+            projectile.Launch(lookDirection, 300);
+
+            animator.SetTrigger("Launch");
         }
 }
 
