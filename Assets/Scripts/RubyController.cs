@@ -61,7 +61,19 @@ public class RubyController : MonoBehaviour
         {
             Launch();     
         }
-        
+         if(Input.GetKeyDown (KeyCode.X))
+         {
+            RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, lookDirection, 1.5f, LayerMask.GetMask("NPC"));
+            if (hit.collider != null)
+            {
+                NpcScript charecter = hit.collider.GetComponent<NpcScript>();
+                if (charecter != null)
+                {
+                    charecter.DisplayDialog();
+                }
+
+            }
+         }
     }
     private void FixedUpdate() 
     {
@@ -94,7 +106,7 @@ public class RubyController : MonoBehaviour
             Debug.Log(currentHealth+ "/" + maxHealth);
 
         }
-
+        //Projectile
         void Launch()
         {
             GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
