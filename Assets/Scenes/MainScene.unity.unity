@@ -254,6 +254,7 @@ GameObject:
   - component: {fileID: 192804172}
   - component: {fileID: 192804171}
   - component: {fileID: 192804174}
+  - component: {fileID: 192804175}
   m_Layer: 12
   m_Name: Jambi
   m_TagString: Untagged
@@ -372,6 +373,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.79503775, y: 0.7950381}
   m_EdgeRadius: 0
+--- !u!114 &192804175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192804170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbfb95bf8f6d54a71b5068f22cc050a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayTime: 4
+  dialogBox: {fileID: 1374721765}
 --- !u!4 &196731254 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 547139835387665439, guid: 3f23095ccae3f41c48b99a310f6e87dd, type: 3}
@@ -16305,7 +16320,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Hey You!
 
-    I need help fixing these robots mind giving me a hnad'
+    I need help fixing these robots mind giving me a hand?
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
